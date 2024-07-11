@@ -1,0 +1,55 @@
+<h1> Edit Lead </h1>
+
+<form [formGroup]="leadForm" (ngSubmit)="onSubmit()">
+  
+    <div>
+      <label>Lead Type</label>
+      <input formControlName="leadType">
+    </div>
+  
+    <br><br>
+
+    <div>
+      <label>Country</label>
+      <input formControlName="country">
+    </div>
+
+    <br><br>
+  
+    <div *ngIf="leadForm.get('leadType')?.value === 'individual'">
+      <div>
+        <label>Person Name</label>
+        <input formControlName="personName">
+      </div>
+
+      <br><br>
+  
+      <div>
+        <label>Age</label>
+        <input type="number" formControlName="age">
+      </div>
+
+      <br><br>
+  
+    </div>
+  
+    <div *ngIf="leadForm.get('leadType')?.value === 'company'">
+      <div>
+        <label>Company Name</label>
+        <input formControlName="companyName">
+      </div>
+
+      <br><br>
+  
+      <div>
+        <label> Company Location</label>
+        <input formControlName="location" >
+      </div>
+
+      <br><br>
+  
+    </div>
+
+    <button type="submit" [disabled]="leadForm.invalid">Submit</button>
+  </form>
+  
